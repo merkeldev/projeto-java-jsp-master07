@@ -12,7 +12,7 @@
 <nav class="navbar navbar-inverse navbar-static-top"></nav>
 
 
-<springform class="form-horizontal" method="post" action="${pageContext.request.contextPath}/usuario" modelAttribute="usuario">
+<spring:form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/usuario" modelAttribute="usuario">
     <div class="panel panel-default">
         <div class="panel-heading">
             <h1 class="panel-title">Cadastro de usuario</h1>
@@ -45,7 +45,6 @@
         </div>
     </div>
     	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-</springform>
+</spring:form>
 </body>
 </html>
-
