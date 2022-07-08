@@ -43,4 +43,5 @@ public class Despesa {
     @Column(name = "obs", nullable = false, length = 4000)
     private String observacoes;
 
+
 }
