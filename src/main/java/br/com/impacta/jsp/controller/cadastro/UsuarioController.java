@@ -4,6 +4,7 @@ package br.com.impacta.jsp.controller.cadastro;
 import br.com.impacta.jsp.model.Usuarios;
 import br.com.impacta.jsp.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.MediaType;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -35,12 +36,18 @@ public class UsuarioController {
         if (errors.hasErrors()) {
             return new ModelAndView("/cadastro/cadastro-usuario");
         }
+    try{
 
         String senhaUsuario = usuarios.getSenha();
         String senhaCriptografada = new BCryptPasswordEncoder().encode(senhaUsuario);
         usuarios.setSenha(senhaCriptografada);
         usuarioService.salvar(usuarios);
 
+
+    } catch (DataIntegrityViolationException d) {
+        errors.rejectValue("email", null, "Email já utilizado no cadastro");
+    }
         return new ModelAndView("redirect:/listagem");
     }
+
 }
