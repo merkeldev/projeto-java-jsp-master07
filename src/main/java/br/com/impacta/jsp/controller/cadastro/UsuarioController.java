@@ -41,6 +41,6 @@ public class UsuarioController {
         usuarios.setSenha(senhaCriptografada);
         usuarioService.salvar(usuarios);
 
-        return new ModelAndView("redirect/listagem");
+        return new ModelAndView("redirect:/listagem");
     }
 }
